@@ -1,0 +1,11 @@
+.selected-releases{
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+  } 
+
+.version-picker-model{
+    width: 600px;
+}
