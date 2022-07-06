@@ -9,3 +9,17 @@ table {
 .version-picker-model{
     width: 600px;
 }
+
+
+.square {
+
+    border:2px solid yellow;
+    width: 30px;
+    height: 30px;
+    text-align:center;
+    padding-top: 2px;
+    padding-right: 1px;
+}
+/* .square h1 {
+    color: #fff;
+} */

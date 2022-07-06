@@ -6,13 +6,13 @@
         <!-- Position Column -->
         <ng-container matColumnDef="year">
           <mat-header-cell *matHeaderCellDef> Year </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.year}} </mat-cell>
+          <mat-cell *matCellDef="let element" > {{element.year}} </mat-cell>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="march">
           <mat-header-cell *matHeaderCellDef> March </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.march}} </mat-cell>
+          <mat-cell *matCellDef="let element" > <div [class.square]="isVersionSelected(element.march)" (click)="versionClick($event)" style="text-align: center;"> {{element.march}} </div></mat-cell>
         </ng-container>
       
         <!-- Weight Column -->
@@ -41,6 +41,12 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <!-- <button mat-button mat-dialog-close>Selected Releases</button> -->
-  <p class="selected-releases">Selected Releases</p>
+  <div style="display: inline;">
+    Selected Releases:
+    <div *ngFor="let v of selectedVersions" class="selected-releases" style="display: inline-block;">
+      <div>{{v}}</div>
+    </div>
+  </div>
+  
   <button mat-stroked-button color="primary" [mat-dialog-close]="true" >Ok</button>
 </mat-dialog-actions>

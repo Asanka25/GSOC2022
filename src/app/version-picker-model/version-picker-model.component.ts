@@ -15,6 +15,7 @@ export class VersionPickerModelComponent implements OnInit {
 
   displayedColumns: string[] = ['year', 'march', 'june', 'september','december'];
   public dataSource: VersionPickerColumn[]=[];
+  public selectedVersions:string[]=[];
 
 
   constructor(private versionService:VersionService) { 
@@ -24,5 +25,27 @@ export class VersionPickerModelComponent implements OnInit {
     this.dataSource=this.versionService.getVersions();
 
   }
+
+  versionClick(event:Event){
+    let version:string =(event.target as HTMLElement).innerText;
+    console.log(version);
+
+    if (this.selectedVersions.includes(version)){
+      this.selectedVersions=this.selectedVersions.filter(el => el!==version);
+    }
+    else
+      this.selectedVersions.push(version);
+
+  }
+
+  isVersionSelected(version:string){
+    if (this.selectedVersions.includes(version)){
+      return true;
+
+    }
+    return false;
+
+  }
+
 
 }

@@ -12,6 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { FilePickerCheckBoxComponent } from './components/file-picker-check-box/file-picker-check-box.component';
 import { VersionPickerModelComponent } from './version-picker-model/version-picker-model.component';
 import { VersionService } from './version.service';
+import { VersionComponent } from './version/version.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VersionService } from './version.service';
     VersionPickerButtonComponent,
     HeaderComponent,
     FilePickerCheckBoxComponent,
-    VersionPickerModelComponent
+    VersionPickerModelComponent,
+    VersionComponent
   ],
   entryComponents:[VersionPickerModelComponent],
   imports: [
