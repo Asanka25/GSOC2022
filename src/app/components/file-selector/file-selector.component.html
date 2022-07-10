@@ -4,104 +4,18 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- 
-        <div class="row">
-            <div class="col-4 text-center">
-                <input type="checkbox" id="user" name="users" value=""/>item1
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item2
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item3
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item4
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item5
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item6
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item7
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item8
-            </div>
-            <div class="col-4 text-center">
-            <input type="checkbox" id="user" name="users" value=""/>item9
-            </div> -->
-    
+
       
     
             <mat-grid-list cols="5" rowHeight="2:1">
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
+
+                <!-- [label]="file.name", -->
+                <!-- <h1>{{tabNumber}}</h1> -->
+                <mat-grid-tile *ngFor="let file of files">
+                    <!-- <app-file-picker-check-box [tabNumber]="tabNumber"></app-file-picker-check-box> -->
+                    <app-file-picker-check-box [label]="file.name" [tabNumber]="tabNumber" ></app-file-picker-check-box>
+
                 </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-                <mat-grid-tile>
-                    <app-file-picker-check-box></app-file-picker-check-box>
-                </mat-grid-tile>
-    
-    
     
             </mat-grid-list>
     

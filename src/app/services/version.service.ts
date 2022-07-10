@@ -1,5 +1,6 @@
 import { Injectable, Version } from '@angular/core';
-
+import { MatCardLgImage } from '@angular/material/card';
+import { BehaviorSubject, Observable,Subject } from 'rxjs';
 
 export interface VersionPickerColumn {
   year: number;
@@ -16,6 +17,10 @@ export interface VersionPickerColumn {
 })
 export class VersionService {
 
+  private subject =new BehaviorSubject<any>('');
+  public selectedVersions:string[]=["80","76"];
+  public finalSelectedVersions:string[]=[];
+  
   constructor() { }
 
   getVersions(){
@@ -36,11 +41,23 @@ export class VersionService {
       {year: 2014, march: '44', june: "45", september: '46',december:"47"},
       {year: 2013, march: '40', june: "41", september: '42',december:"43"},
       
-    
+
     ];
 
     return ELEMENT_DATA;
   }
+
+
+
+  emit<T>(data:T){
+    this.subject.next(data);
+
+  }
+
+  on<T>():Observable<T>{
+    return this.subject.asObservable();
+  }
+
 
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FileService, File } from 'src/app/services/file.service';
 
 @Component({
   selector: 'app-file-selector',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileSelectorComponent implements OnInit {
 
-  constructor() { }
+  @Input() tabNumber:string="";
+  public files:File[];
+
+  constructor(private fileService:FileService) {
+    this.files=fileService.getFileData();
+  }
 
   ngOnInit(): void {
   }

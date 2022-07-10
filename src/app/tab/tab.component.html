@@ -1,0 +1,10 @@
+  <!-- <app-file-selector></app-file-selector> -->
+  <mat-tab-group #tabref>
+    <div *ngFor="let v of finalSelectedVersions">
+        <mat-tab label={{v}} >
+            <app-file-selector [tabNumber]="v"></app-file-selector>
+        </mat-tab>
+    </div>
+
+  </mat-tab-group>
+  <!-- <h1>{{tabref.MatTabLabel}}</h1> -->

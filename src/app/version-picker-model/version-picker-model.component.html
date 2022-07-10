@@ -3,34 +3,34 @@
 <mat-dialog-content class="mat-typography">
 
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Position Column -->
+        <!-- Year Column -->
         <ng-container matColumnDef="year">
           <mat-header-cell *matHeaderCellDef> Year </mat-header-cell>
           <mat-cell *matCellDef="let element" > {{element.year}} </mat-cell>
         </ng-container>
       
-        <!-- Name Column -->
+        <!-- March Column -->
         <ng-container matColumnDef="march">
           <mat-header-cell *matHeaderCellDef> March </mat-header-cell>
           <mat-cell *matCellDef="let element" > <div [class.square]="isVersionSelected(element.march)" (click)="versionClick($event)" style="text-align: center;"> {{element.march}} </div></mat-cell>
         </ng-container>
       
-        <!-- Weight Column -->
+        <!-- June Column -->
         <ng-container matColumnDef="june">
           <mat-header-cell *matHeaderCellDef> June </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.june}} </mat-cell>
+          <mat-cell *matCellDef="let element"  > <div [class.square]="isVersionSelected(element.june)" (click)="versionClick($event)" style="text-align: center;"> {{element.june}} </div></mat-cell>
         </ng-container>
       
-        <!-- Symbol Column -->
+        <!-- September Column -->
         <ng-container matColumnDef="september">
           <mat-header-cell *matHeaderCellDef> September </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.september}} </mat-cell>
+          <mat-cell *matCellDef="let element" > <div [class.square]="isVersionSelected(element.september)" (click)="versionClick($event)" style="text-align: center;"> {{element.september}} </div></mat-cell>
         </ng-container>
       
-        <!-- Symbol Column -->
+        <!-- December Column -->
         <ng-container matColumnDef="december">
             <mat-header-cell *matHeaderCellDef> December </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.december}} </mat-cell>
+            <mat-cell *matCellDef="let element"> <div [class.square]="isVersionSelected(element.december)" (click)="versionClick($event)" style="text-align: center;"> {{element.december}} </div> </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -43,10 +43,13 @@
   <!-- <button mat-button mat-dialog-close>Selected Releases</button> -->
   <div style="display: inline;">
     Selected Releases:
-    <div *ngFor="let v of selectedVersions" class="selected-releases" style="display: inline-block;">
+    <div *ngFor="let v of selectedReleases" class="selected-releases" style="display: inline-block;">
       <div>{{v}}</div>
     </div>
   </div>
   
-  <button mat-stroked-button color="primary" [mat-dialog-close]="true" >Ok</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="true" (click)="submitVersion()">Ok</button>
 </mat-dialog-actions>
+
+
+<!-- [disabled]="label!= '-'? false: true" -->

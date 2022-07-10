@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VersionPickerColumn, VersionService } from '../version.service';
-
-
-
+import { VersionPickerColumn, VersionService } from '../services/version.service';
 
 
 @Component({
@@ -15,37 +12,57 @@ export class VersionPickerModelComponent implements OnInit {
 
   displayedColumns: string[] = ['year', 'march', 'june', 'september','december'];
   public dataSource: VersionPickerColumn[]=[];
-  public selectedVersions:string[]=[];
+  public selectedReleases:string[]=[];
+
 
 
   constructor(private versionService:VersionService) { 
   }
 
   ngOnInit(): void {
+
     this.dataSource=this.versionService.getVersions();
+    this.selectedReleases=[...this.versionService.selectedVersions];
 
   }
 
   versionClick(event:Event){
     let version:string =(event.target as HTMLElement).innerText;
-    console.log(version);
 
-    if (this.selectedVersions.includes(version)){
-      this.selectedVersions=this.selectedVersions.filter(el => el!==version);
+
+    if (this.selectedReleases.includes(version)){
+      this.selectedReleases=this.selectedReleases.filter(el => el!==version);
+ 
+
     }
     else
-      this.selectedVersions.push(version);
+      if(version!="-")
+        this.selectedReleases.push(version);
+      this.selectedReleases.sort((a,b) => (a > b ? -1 : 1));
+      console.log(this.selectedReleases,this.versionService.selectedVersions)
+
+    
+
 
   }
 
   isVersionSelected(version:string){
-    if (this.selectedVersions.includes(version)){
+    if (this.selectedReleases.includes(version) && version!="-"){
       return true;
 
     }
     return false;
 
   }
+
+  submitVersion(){
+
+    
+    this.versionService.selectedVersions=this.selectedReleases;
+    this.versionService.emit<string[]>(this.versionService.selectedVersions);
+
+
+    }
 
 
 }

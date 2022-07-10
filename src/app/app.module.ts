@@ -11,8 +11,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { FilePickerCheckBoxComponent } from './components/file-picker-check-box/file-picker-check-box.component';
 import { VersionPickerModelComponent } from './version-picker-model/version-picker-model.component';
-import { VersionService } from './version.service';
+import { VersionService } from './services/version.service';
 import { VersionComponent } from './version/version.component';
+import { TabComponent } from './tab/tab.component';
+import { FileService } from './services/file.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { VersionComponent } from './version/version.component';
     HeaderComponent,
     FilePickerCheckBoxComponent,
     VersionPickerModelComponent,
-    VersionComponent
+    VersionComponent,
+    TabComponent
   ],
   entryComponents:[VersionPickerModelComponent],
   imports: [
@@ -31,7 +34,7 @@ import { VersionComponent } from './version/version.component';
     MatCardModule,MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [VersionService],
+  providers: [VersionService,FileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
