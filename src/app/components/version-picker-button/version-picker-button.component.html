@@ -1,5 +1,9 @@
 <div class="version-picker-button">
 
-    <button mat-stroked-button color="warn" (click)="openVersionPickerModel()">Pick versions</button>
+    <button mat-stroked-button color="warn" (click)="openVersionPickerModel()">
+
+        {{!isVersionSelected ? 'Pick versions' : 'Edit versions'}}
+
+    </button>
 
 </div>

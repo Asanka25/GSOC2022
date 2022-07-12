@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {  Observable,Subject } from 'rxjs';
 
 export interface File {
   id: number;
@@ -14,11 +15,14 @@ export interface File {
 
 export class FileService {
 
-  private _selections: { [version: string] : string[] } = {};
-  private _isAllVersionsSelected=false;
+  public selections: { [version: string] : string[] } = {};
+  private _fileSource=new Subject<boolean>();
+  sameFileForSelectedReleases=true;
+
+  _sameFileForSelectedReleases$=this._fileSource.asObservable();
 
   constructor() { }
-
+// 
   public FILE_DATA: File[] = [
 
     {id: 1, name: 'File1'},
@@ -33,29 +37,49 @@ export class FileService {
     {id: 10, name: 'File10'},
     {id: 11, name: 'File11'},
     {id: 12, name: 'File12'},
-
-
+  
   ];
+
+  setIsSelectAllReleases(value:boolean){
+     this.sameFileForSelectedReleases=value;
+     this._fileSource.next(value);
+  }
+//   getIsSelectAllReleases():boolean{
+//     return this._sameFileForSelectedReleases;
+//  }
 
   getFileData():File[]{
     return this.FILE_DATA;
   }
 
   selectFile(version:string,name:string){
-    if (this._selections.hasOwnProperty(version)) {
-      let fileList=this._selections[version]
+    // console.log("file lsitttt",this.selections)
+
+    if (this.selections.hasOwnProperty(version)) {
+      let fileList=this.selections[version]
+      console.log("file lsit",fileList)
+
       if(!fileList.includes(name))
         fileList.push(name)
       else
       // Remove item
         fileList = fileList.filter(obj =>  obj !== name);
+        // console.log("before len check",fileList.length)
+        // console.log("before len check list",fileList)
 
-      this._selections[version]=fileList
+        // if(fileList.length==0){
+        //  console.log("abt to dlt")
+        //  this.selections = this.selections.filter(item => item.key !== id)
+        //   delete this.selections[version];
+        //   console.log("dict del",this.selections,this.selections.hasOwnProperty(version))
+        // }
+
+      this.selections[version]=fileList
     }else{
-      this._selections[version]=[name];
+      this.selections[version]=[name];
 
     }
-    console.log("dict",this._selections)
+    console.log("dict",this.selections)
   }
 
 }

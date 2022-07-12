@@ -10,11 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { FilePickerCheckBoxComponent } from './components/file-picker-check-box/file-picker-check-box.component';
-import { VersionPickerModelComponent } from './version-picker-model/version-picker-model.component';
+import { VersionPickerModelComponent } from './components/version-picker-model/version-picker-model.component';
 import { VersionService } from './services/version.service';
 import { VersionComponent } from './version/version.component';
-import { TabComponent } from './tab/tab.component';
+import { TabComponent } from './components/tab/tab.component';
 import { FileService } from './services/file.service';
+import { FormsModule } from '@angular/forms';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { FileService } from './services/file.service';
     FilePickerCheckBoxComponent,
     VersionPickerModelComponent,
     VersionComponent,
-    TabComponent
+    TabComponent,
+    SummaryComponent
   ],
   entryComponents:[VersionPickerModelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatCardModule,MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [VersionService,FileService],
   bootstrap: [AppComponent]

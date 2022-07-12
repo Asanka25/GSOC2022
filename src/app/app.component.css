@@ -1,0 +1,23 @@
+.mat-radio-group {
+    display: inline;
+    margin: 20px;
+} 
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+.header2{
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.container{
+    position: relative;
+}
+
+.mat-stroked-button{
+    margin: 20px;
+}

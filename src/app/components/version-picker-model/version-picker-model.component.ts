@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VersionPickerColumn, VersionService } from '../services/version.service';
+import { VersionPickerColumn, VersionService } from '../../services/version.service';
 
 
 @Component({
@@ -39,7 +39,7 @@ export class VersionPickerModelComponent implements OnInit {
       if(version!="-")
         this.selectedReleases.push(version);
       this.selectedReleases.sort((a,b) => (a > b ? -1 : 1));
-      console.log(this.selectedReleases,this.versionService.selectedVersions)
+      // console.log(this.selectedReleases,this.versionService.selectedVersions)
 
     
 
@@ -57,12 +57,10 @@ export class VersionPickerModelComponent implements OnInit {
 
   submitVersion(){
 
-    
     this.versionService.selectedVersions=this.selectedReleases;
     this.versionService.emit<string[]>(this.versionService.selectedVersions);
+    this.versionService.updateIsVersionSelected(true);
 
-
-    }
-
+  }
 
 }

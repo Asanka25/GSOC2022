@@ -18,8 +18,12 @@ export interface VersionPickerColumn {
 export class VersionService {
 
   private subject =new BehaviorSubject<any>('');
+  private _versionSource=new Subject<boolean>();
+  isVersionSelected$=this._versionSource.asObservable();
+
   public selectedVersions:string[]=["80","76"];
-  public finalSelectedVersions:string[]=[];
+  // public finalSelectedVersions:string[]=[];
+  // public isVersionSelected=false;
   
   constructor() { }
 
@@ -58,6 +62,8 @@ export class VersionService {
     return this.subject.asObservable();
   }
 
-
+  updateIsVersionSelected(isSelected:boolean){
+    this._versionSource.next(isSelected);
+  }
 
 }

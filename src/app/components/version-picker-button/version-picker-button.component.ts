@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { VersionPickerModelComponent } from 'src/app/version-picker-model/version-picker-model.component';
+import { VersionPickerModelComponent } from 'src/app/components/version-picker-model/version-picker-model.component';
+import { VersionService } from 'src/app/services/version.service';
 
 
 
@@ -12,9 +13,9 @@ import { VersionPickerModelComponent } from 'src/app/version-picker-model/versio
 export class VersionPickerButtonComponent implements AfterViewInit {
   // @ViewChild(VersionPickerModelComponent) childComponentRef:VersionPickerModelComponent;
   
+  public isVersionSelected:Boolean=false; 
+  constructor(private _dialog:MatDialog,private _versionService:VersionService)  {
 
-  constructor(public dialog:MatDialog)  {
-    // this.childComponentRef=VersionPickerModelComponent;
    }
 
    ngAfterViewInit(): void {
@@ -22,15 +23,19 @@ export class VersionPickerButtonComponent implements AfterViewInit {
    }
 
   ngOnInit(): void {
+    this._versionService.isVersionSelected$.subscribe(value=>{
+      this.isVersionSelected=value;
+    })
+    // console.log("is version selected in button",this.isVersionSelected)
   }
 
 
 
   openVersionPickerModel(){
-    console.log("clicked")
+    // console.log("clicked")
     const dialogConfig=new MatDialogConfig();
     dialogConfig.width="600px";
-    this.dialog.open(VersionPickerModelComponent);
+    this._dialog.open(VersionPickerModelComponent);
   }
 
 }

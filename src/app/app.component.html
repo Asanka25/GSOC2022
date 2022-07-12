@@ -1,10 +1,29 @@
 <div class="container">
   <app-header></app-header>
+  
   <app-version-picker-button></app-version-picker-button>
   <mat-divider></mat-divider>
 
-  <app-tab></app-tab>
 
+
+<div [style.display]="!isVersionSelected?'none':''">
+  <div class="mat-subheading-2 header2">Download same file for selected releases?</div>
+
+  <mat-radio-group aria-label="Select an option"  > 
+      <mat-radio-button value="1" (change)="radioChange($event)" checked="">Yes</mat-radio-button >
+      <mat-radio-button value="2" (change)="radioChange($event)">No</mat-radio-button>
+  </mat-radio-group>
+
+</div>
+
+
+<!-- <app-radio-button></app-radio-button> -->
+
+<app-tab></app-tab>
+
+<div style="position:absolute;right: 10px;bottom:10px;" [style.display]="!isVersionSelected?'none':''">
+  <button mat-stroked-button color="warn" (click)="openSummaryModel()">Review Selections & Download</button>
+</div>
 
 
 

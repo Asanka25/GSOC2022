@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>File Download - Summary</h2>
+<mat-dialog-content class="mat-typography">
+
+  <div *ngIf="!_sameFileForSelectedReleases; else elseBlock">
+
+    <div *ngFor="let v of finalSelectedVersions">
+
+      <div>Version {{v}}</div>
+      <div *ngFor="let t of selections[v]">
+        <div>- {{t}}</div>
+      </div>
+      <br>
+  
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+
+    <div *ngFor="let v of finalSelectedVersions">
+      <div>Version {{v}}</div>
+    </div>
+    <div *ngFor="let t of selections[''] ">
+      <div>- {{t}}</div>
+    </div>
+  </ng-template>
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+
+  <button mat-flat-button color="primary">Edit Selections</button>
+  <button mat-flat-button color="warn" >Download</button>
+
+
+</mat-dialog-actions>
+
+
+

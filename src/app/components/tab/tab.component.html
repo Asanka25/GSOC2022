@@ -1,5 +1,5 @@
   <!-- <app-file-selector></app-file-selector> -->
-  <mat-tab-group #tabref>
+  <mat-tab-group *ngIf="!sameFileForSelectedReleases; else elseBlock">
     <div *ngFor="let v of finalSelectedVersions">
         <mat-tab label={{v}} >
             <app-file-selector [tabNumber]="v"></app-file-selector>
@@ -7,4 +7,12 @@
     </div>
 
   </mat-tab-group>
-  <!-- <h1>{{tabref.MatTabLabel}}</h1> -->
+
+<ng-template #elseBlock>
+
+    <app-file-selector></app-file-selector>
+
+</ng-template>
+  
+
+  
