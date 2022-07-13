@@ -22,7 +22,7 @@ export class FileService {
   _sameFileForSelectedReleases$=this._fileSource.asObservable();
 
   constructor() { }
-// 
+
   public FILE_DATA: File[] = [
 
     {id: 1, name: 'File1'},
@@ -44,16 +44,14 @@ export class FileService {
      this.sameFileForSelectedReleases=value;
      this._fileSource.next(value);
   }
-//   getIsSelectAllReleases():boolean{
-//     return this._sameFileForSelectedReleases;
-//  }
+
 
   getFileData():File[]{
     return this.FILE_DATA;
   }
 
   selectFile(version:string,name:string){
-    // console.log("file lsitttt",this.selections)
+
 
     if (this.selections.hasOwnProperty(version)) {
       let fileList=this.selections[version]
@@ -64,22 +62,13 @@ export class FileService {
       else
       // Remove item
         fileList = fileList.filter(obj =>  obj !== name);
-        // console.log("before len check",fileList.length)
-        // console.log("before len check list",fileList)
-
-        // if(fileList.length==0){
-        //  console.log("abt to dlt")
-        //  this.selections = this.selections.filter(item => item.key !== id)
-        //   delete this.selections[version];
-        //   console.log("dict del",this.selections,this.selections.hasOwnProperty(version))
-        // }
 
       this.selections[version]=fileList
     }else{
       this.selections[version]=[name];
 
     }
-    console.log("dict",this.selections)
+    
   }
 
 }

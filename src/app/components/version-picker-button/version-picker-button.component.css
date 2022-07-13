@@ -5,4 +5,10 @@
 
 .version-picker-button{
     display: inline;
+    margin-left: 10px;
+}
+
+.version-picker-button:focus{
+  outline: none ;
+  border: 0 ;
 }

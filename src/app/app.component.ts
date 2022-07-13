@@ -26,15 +26,7 @@ export class AppComponent implements OnInit{
     this._versionService.isVersionSelected$.subscribe(value=>{
       this.isVersionSelected=value;
     })
-    // console.log("is version",this.isVersionSelected)
-
-
-    // let dict[]={"a":[],"b":[1,2]}
-    // let dict: { [version: string] : string[] } = {"1":["abc"],"2":[],"3":["a","b","c"]};
-
-    // console.log(dict)
-    // delete dict["2"];
-    // console.log(dict)
+ 
 
   }
 
@@ -48,15 +40,13 @@ export class AppComponent implements OnInit{
 
 
   radioChange(event: MatRadioChange) {
-    // this.filter['property'] = event.value;
-    console.log("mat radio changed")
+ 
     this._sameFileForSelectedReleases=event.value=="1"?true:false;
-    // console.log(this._sameFileForSelectedReleases);
     this._fileService.setIsSelectAllReleases(this._sameFileForSelectedReleases);
     this._fileService.selections={};
-    console.log("radio change",this._sameFileForSelectedReleases)
 
-}
+
+  }
 
 
 }

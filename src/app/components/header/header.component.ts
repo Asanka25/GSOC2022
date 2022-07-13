@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VersionService } from 'src/app/services/version.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public finalSelectedVersions:string[]=[];
 
   constructor() { }
 
+
+
   ngOnInit(): void {
-  }
+
+  
+    }
+
+
+  
 
 }

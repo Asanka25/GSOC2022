@@ -13,6 +13,7 @@ export class SummaryComponent implements OnInit {
   public _sameFileForSelectedReleases: boolean=true;
   public selectedVersions:string[]=[];
   public finalSelectedVersions;
+  public noFilesSelectedFlag=true;
 
 
   constructor(private _fileService:FileService,private _versionService: VersionService) {
@@ -21,27 +22,42 @@ export class SummaryComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("onit")
+   
+
     this.selections=this._fileService.selections;
     for(let key in this.selections){
-      if(this.selections[key].length==0){
-   
-        this.finalSelectedVersions = this.finalSelectedVersions.filter(obj =>  obj !== key);
-
+      if (key=="" && this.selections[key].length==0) {
+        this.finalSelectedVersions=[];
       }
-
+      else if(this.selections[key].length==0){
+        this.finalSelectedVersions = this.finalSelectedVersions.filter(obj =>  obj !== key);
+       
+      }else{
+          this.noFilesSelectedFlag=false;
+      }
+      
     }
-
     this.finalSelectedVersions=this.finalSelectedVersions.sort((a,b) => (a > b ? -1 : 1)); //sort keys in selections dictionary desc order
-    console.log("finalselever",this.finalSelectedVersions)
+    
     this._fileService._sameFileForSelectedReleases$.subscribe(value=>{
       this._sameFileForSelectedReleases=value;
-      console.log("check",this._sameFileForSelectedReleases)
     })
-  console.log("finalSelectedVersions",this.finalSelectedVersions)
-  console.log("selections",this.selections)
-  console.log("bool",this._sameFileForSelectedReleases)
+    
 
   }
+
+
+  download(){
+    //send request to cloudFront
+    if(!this.noFilesSelectedFlag){      
+      console.log("send request to cloudFront")
+    }
+  }
+
+  editSelections(){
+    console.log("edit selections")
+  }
+
+
 
 }

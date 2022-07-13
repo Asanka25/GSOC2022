@@ -1,4 +1,9 @@
+<div *ngFor="let v of finalSelectedVersions" style="display:inline">
+    <p style="display:inline;margin: 3px;">{{v}},</p>
+</div>
+
 <div class="version-picker-button">
+
 
     <button mat-stroked-button color="warn" (click)="openVersionPickerModel()">
 

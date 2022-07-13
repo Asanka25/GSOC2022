@@ -1,28 +1,37 @@
 <h2 mat-dialog-title>File Download - Summary</h2>
 <mat-dialog-content class="mat-typography">
 
-  <div *ngIf="!_sameFileForSelectedReleases; else elseBlock">
-
-    <div *ngFor="let v of finalSelectedVersions">
-
-      <div>Version {{v}}</div>
-      <div *ngFor="let t of selections[v]">
-        <div>- {{t}}</div>
-      </div>
-      <br>
-  
-    </div>
+  <div *ngIf="noFilesSelectedFlag; else ShowFilesBlock">
+    <div>Please select files to be downloaded!!</div>
   </div>
 
-  <ng-template #elseBlock>
+  <ng-template #ShowFilesBlock> 
 
-    <div *ngFor="let v of finalSelectedVersions">
-      <div>Version {{v}}</div>
+    <div *ngIf="!_sameFileForSelectedReleases; else elseBlock">
+
+      <div *ngFor="let v of finalSelectedVersions">
+  
+        <div>Version {{v}}</div>
+        <div *ngFor="let t of selections[v]">
+          <div>- {{t}}</div>
+        </div>
+        <br>
+    
+      </div>
     </div>
-    <div *ngFor="let t of selections[''] ">
-      <div>- {{t}}</div>
-    </div>
-  </ng-template>
+  
+    <ng-template #elseBlock>
+  
+      <div *ngFor="let v of finalSelectedVersions">
+        <div>Version {{v}}</div>
+      </div>
+      <div *ngFor="let t of selections[''] ">
+        <div>- {{t}}</div>
+      </div>
+    </ng-template>
+  
+
+  </ng-template >
 
 
 
@@ -30,8 +39,8 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
 
-  <button mat-flat-button color="primary">Edit Selections</button>
-  <button mat-flat-button color="warn" >Download</button>
+  <button mat-flat-button color="primary" [mat-dialog-close] (click)="editSelections()">Edit Selections</button>
+  <button mat-flat-button color="warn" [mat-dialog-close] (click)="download()">Download</button>
 
 
 </mat-dialog-actions>

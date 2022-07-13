@@ -22,12 +22,8 @@ export class FilePickerCheckBoxComponent implements OnInit {
 
   onClick(){
 
-    // console.log("file selection",this.label,this.tabNumber);
-    console.log("send")
-
     this.fileService.selectFile(this.tabNumber,this.label)
-    // this.checkBoxEnabled="true";
-    // call function in parent
+  
   }
 
   

@@ -10,29 +10,32 @@ import { VersionService } from 'src/app/services/version.service';
   templateUrl: './version-picker-button.component.html',
   styleUrls: ['./version-picker-button.component.css']
 })
-export class VersionPickerButtonComponent implements AfterViewInit {
-  // @ViewChild(VersionPickerModelComponent) childComponentRef:VersionPickerModelComponent;
+export class VersionPickerButtonComponent implements OnInit {
+  public finalSelectedVersions:string[]=[];
   
   public isVersionSelected:Boolean=false; 
   constructor(private _dialog:MatDialog,private _versionService:VersionService)  {
 
    }
 
-   ngAfterViewInit(): void {
-    //  this.childComponentRef.isVersionSelected=[];
-   }
+
 
   ngOnInit(): void {
     this._versionService.isVersionSelected$.subscribe(value=>{
       this.isVersionSelected=value;
     })
-    // console.log("is version selected in button",this.isVersionSelected)
+         
+    this._versionService.on().subscribe(data=>{
+      this.finalSelectedVersions=data;
+    })
+          
+
+
   }
 
 
 
   openVersionPickerModel(){
-    // console.log("clicked")
     const dialogConfig=new MatDialogConfig();
     dialogConfig.width="600px";
     this._dialog.open(VersionPickerModelComponent);

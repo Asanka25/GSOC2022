@@ -17,8 +17,8 @@ export class TabComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.finalSelectedVersions=this.versionService.finalSelectedVersions;
-    this.versionService.on<string[]>().subscribe(
+    
+    this.versionService.on().subscribe(
       data=>{
         this.finalSelectedVersions=data;
       }
@@ -28,11 +28,5 @@ export class TabComponent implements OnInit {
     })
   }
 
-
-  // setFinalSelectedVersions(finalSelectedVersions : string[]){
-
-  //   this.finalSelectedVersions=finalSelectedVersions;
-
-  // }
 
 }

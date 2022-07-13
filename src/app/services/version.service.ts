@@ -21,9 +21,8 @@ export class VersionService {
   private _versionSource=new Subject<boolean>();
   isVersionSelected$=this._versionSource.asObservable();
 
-  public selectedVersions:string[]=["80","76"];
-  // public finalSelectedVersions:string[]=[];
-  // public isVersionSelected=false;
+  public selectedVersions:string[]=[];
+
   
   constructor() { }
 
@@ -53,12 +52,12 @@ export class VersionService {
 
 
 
-  emit<T>(data:T){
+  emit(data:string[]){
     this.subject.next(data);
 
   }
 
-  on<T>():Observable<T>{
+  on():Observable<string[]>{
     return this.subject.asObservable();
   }
 
