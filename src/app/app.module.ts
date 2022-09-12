@@ -17,6 +17,7 @@ import { TabComponent } from './components/tab/tab.component';
 import { FileService } from './services/file.service';
 import { FormsModule } from '@angular/forms';
 import { SummaryComponent } from './components/summary/summary.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SummaryComponent } from './components/summary/summary.component';
     AppRoutingModule,
     MatCardModule,MaterialModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [VersionService,FileService],
   bootstrap: [AppComponent]

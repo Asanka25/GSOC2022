@@ -48,7 +48,7 @@
     </div>
   </div>
   
-  <button mat-stroked-button color="primary" [mat-dialog-close]="true" (click)="submitVersion()">Ok</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="true" (click)="submitVersion()" [disabled]="selectedReleases.length==0?true:false">Ok</button>
 </mat-dialog-actions>
 
 
