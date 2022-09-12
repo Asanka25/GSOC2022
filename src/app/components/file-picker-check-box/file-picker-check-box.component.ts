@@ -23,6 +23,7 @@ export class FilePickerCheckBoxComponent implements OnInit {
   onClick(){
 
     this.fileService.selectFile(this.tabNumber,this.label)
+    console.log("onclick",this.tabNumber)
   
   }
 

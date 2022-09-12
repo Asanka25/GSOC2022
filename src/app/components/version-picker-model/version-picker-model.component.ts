@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { VersionPickerColumn, VersionService } from '../../services/version.service';
+import { FileService } from 'src/app/services/file.service';
+import { VersionPickerRow, VersionService } from '../../services/version.service';
 
 
 @Component({
@@ -11,17 +12,23 @@ export class VersionPickerModelComponent implements OnInit {
 
 
   displayedColumns: string[] = ['year', 'march', 'june', 'september','december'];
-  public dataSource: VersionPickerColumn[]=[];
+  public dataSource: any;
   public selectedReleases:string[]=[];
 
 
-
-  constructor(private versionService:VersionService) { 
+  constructor(private versionService:VersionService,private fileService:FileService) { 
+    
   }
 
   ngOnInit(): void {
-
-    this.dataSource=this.versionService.getVersions();
+    // console.log("version picker");
+    
+    
+      this.dataSource=this.versionService.getVersions();
+      // console.log(data);
+      
+    
+    // this.dataSource=this.versionService.getVersions();
     this.selectedReleases=[...this.versionService.selectedVersions];
 
   }
@@ -36,15 +43,12 @@ export class VersionPickerModelComponent implements OnInit {
 
     }
     else
-      if(version!="-")
+      if(version!="-"){
         this.selectedReleases.push(version);
-      this.selectedReleases.sort((a,b) => (a > b ? -1 : 1));
-      
-
-    
-
-
+        this.selectedReleases.sort((a,b) => (a > b ? -1 : 1));
+      }
   }
+
 
   isVersionSelected(version:string){
     if (this.selectedReleases.includes(version) && version!="-"){
@@ -58,8 +62,13 @@ export class VersionPickerModelComponent implements OnInit {
   submitVersion(){
 
     this.versionService.selectedVersions=this.selectedReleases;
-    this.versionService.emit(this.versionService.selectedVersions);
-    this.versionService.updateIsVersionSelected(true);
+    this.versionService.emit(this.versionService.selectedVersions); 
+    this.fileService.createVersionFileMap().then(()=>{
+    console.log("before update",this.fileService.versionFileMap);
+    this.fileService.createCommonFileSet()
+    this.versionService.updateIsVersionSelected(true)
+
+    })                                               //call file service and fetch files according to the selected versions
 
   }
 

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
 import { SummaryComponent } from './components/summary/summary.component';
-import { FileService } from './services/file.service';
+import { File, FileService } from './services/file.service';
 import { VersionService } from './services/version.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { VersionService } from './services/version.service';
 export class AppComponent implements OnInit{
   title = 'gsoc';
 
-  private _sameFileForSelectedReleases=true;
+  public sameFileForSelectedReleases=true;
 
   public isVersionSelected:Boolean=false; 
   constructor(private _versionService:VersionService,private _dialog:MatDialog,private _fileService:FileService){
@@ -23,11 +24,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
+    console.log("app com");
+    this._versionService.initVersions();
     this._versionService.isVersionSelected$.subscribe(value=>{
       this.isVersionSelected=value;
     })
- 
-
   }
 
 
@@ -41,12 +42,11 @@ export class AppComponent implements OnInit{
 
   radioChange(event: MatRadioChange) {
  
-    this._sameFileForSelectedReleases=event.value=="1"?true:false;
-    this._fileService.setIsSelectAllReleases(this._sameFileForSelectedReleases);
+    this.sameFileForSelectedReleases=event.value=="1"?true:false;
+    this._fileService.setIsSelectAllReleases(this.sameFileForSelectedReleases);
     this._fileService.selections={};
-
-
+    // this._fileService.createCommonFileSet()
+    
   }
-
 
 }
