@@ -1,6 +1,20 @@
-# Gsoc2022
+![gsoc](https://user-images.githubusercontent.com/47146031/189819089-c6305887-91b6-45f7-af25-5f910073cc97.png)
+# GSOC2022 with Open Genome Informatics
 
-This is my GSOC2022 project where I contributed to the Reactome archive. This Angular UI solved the UI issue Reactome archive had.
+This is my GSOC2022 [project](https://summerofcode.withgoogle.com/programs/2022/projects/0VT60ELS) where I contributed to the Reactome archive of Open Genome Informatics. 
+
+
+
+
+## Project Description
+
+In Reactome, once the new data is released, preceding data will be archived in an AWS S3 bucket. They didn't have a web interface for users to request and download previous versions of archived data.
+
+## Contribution
+
+- Discuss and added suggestions to the mock UIs
+- Implemented the UIs using Angular framework
+- Implemented a dummy [REST-API](https://drive.google.com/file/d/15mY2DHELAuNrvbsbKmYPWD8ef1kKMfos/view?usp=sharing) to test the UI in local environment
 
 ## Development server
 
