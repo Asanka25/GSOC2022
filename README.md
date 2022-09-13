@@ -1,10 +1,10 @@
-# Gsoc
+# Gsoc2022
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+This is my GSOC2022 project where I contributed to the Reactome archive. This Angular UI solved the UI issue Reactome archive had.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm install` and `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
