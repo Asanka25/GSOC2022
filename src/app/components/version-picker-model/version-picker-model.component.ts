@@ -64,11 +64,10 @@ export class VersionPickerModelComponent implements OnInit {
     this.versionService.selectedVersions=this.selectedReleases;
     this.versionService.emit(this.versionService.selectedVersions); 
     this.fileService.createVersionFileMap().then(()=>{
-    console.log("before update",this.fileService.versionFileMap);
-    this.fileService.createCommonFileSet()
+    this.fileService.createCommonFileSet() //create common fildata set
     this.versionService.updateIsVersionSelected(true)
 
-    })                                               //call file service and fetch files according to the selected versions
+    })                                              
 
   }
 

@@ -12,21 +12,12 @@ export class FileSelectorComponent implements OnInit {
   @Input() tabNumber:any;
   public files:any;
 
-  constructor(private fileService:FileService) {
-   
-    // this.fileService.getFileData().subscribe(data=>{
-    //   this.files=data;
-    //   console.log("this.files inside ..............")
-    // })
-  }
+  constructor(private fileService:FileService) {}
 
   ngOnInit(): void {
-    console.log("received",this.tabNumber);
-    this.files=this.fileService.getFileSet(this.tabNumber)
-    console.log("file selector",this.files);
-    
-    
 
+    this.files=this.fileService.getFileSet(this.tabNumber)
+ 
   }
 
 }
