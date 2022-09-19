@@ -13,7 +13,7 @@
                 <!-- <h1>{{tabNumber}}</h1> -->
                 <mat-grid-tile *ngFor="let file of files">
                     <!-- <app-file-picker-check-box [tabNumber]="tabNumber"></app-file-picker-check-box> -->
-                    <app-file-picker-check-box [label]="file.name" [tabNumber]="tabNumber" ></app-file-picker-check-box>
+                    <app-file-picker-check-box [label]="file.name" [fileSize]="file.fileSize" [tabNumber]="tabNumber" ></app-file-picker-check-box>
 
                 </mat-grid-tile>
     

@@ -11,7 +11,6 @@ export class SummaryComponent implements OnInit {
 
   public selections: { [version: string] : string[] }={};
   public _sameFileForSelectedReleases: boolean=true;
-  // public selectedVersions:string[]=[];
   public finalSelectedVersions;
   public noFilesSelectedFlag=true;
 
@@ -46,9 +45,9 @@ export class SummaryComponent implements OnInit {
 
   }
 
-
+// Iterate through selected files and extract links for download
   download(){
-    //send request to cloudFront
+    
     if(!this.noFilesSelectedFlag){      
       var linksArr:any[]=[];
       if(!this._fileService.sameFileForSelectedReleases ){
@@ -56,7 +55,6 @@ export class SummaryComponent implements OnInit {
         for(let version in this.selections){
           let FileNames=this.selections[version];
           FileNames.forEach(file_name=>{
-            console.log(file_name);
             let fileObj=this._fileService.versionFileMap[version].filter((file)=>file.name==file_name)[0]
             linksArr.push(fileObj.link)
          

@@ -21,3 +21,9 @@
 .mat-stroked-button{
     margin: 20px;
 }
+.mat-icon{
+
+    color:rgb(34, 24, 173);
+    transform: scale(0.7);
+
+}

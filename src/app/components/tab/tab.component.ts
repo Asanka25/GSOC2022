@@ -30,8 +30,7 @@ export class TabComponent implements OnInit {
     this._fileService._sameFileForSelectedReleases$.subscribe(value=>{
       this.sameFileForSelectedReleases=value;
     })
-  // console.log("tab inside contructor",this.finalSelectedVersions);
-
+  
   }
 
 

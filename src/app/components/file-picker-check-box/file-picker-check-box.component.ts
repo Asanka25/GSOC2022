@@ -11,6 +11,7 @@ export class FilePickerCheckBoxComponent implements OnInit {
 
 
   @Input() label:string="";
+  @Input() fileSize:string="";
   @Input() tabNumber:string="";
 
   public checkBoxEnabled="false";
@@ -23,8 +24,7 @@ export class FilePickerCheckBoxComponent implements OnInit {
   onClick(){
 
     this.fileService.selectFile(this.tabNumber,this.label)
-    console.log("onclick",this.tabNumber)
-  
+    
   }
 
   

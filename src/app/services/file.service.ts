@@ -8,6 +8,7 @@ import axios from 'axios';
 export interface File {
   id: number;
   name: string;
+  fileSize:string
   link:string
 }
 
@@ -46,34 +47,26 @@ export class FileService {
   }
     
 
-
+// Once the versions are selected and files fetched, this function will be invoked and it will create
+// common file set among the selected versions
   createCommonFileSet(){
  
     var arr:any = [];
     for (let version in this.versionFileMap) {
-      // console.log(version, );
       var file_list=this.versionFileMap[version]
       arr.push(file_list)
-
-
     }
     
     const commonArray = arr.reduce((p:any, c:any) =>{
-
     return p.filter((e:any) => c.map((a:any) => a.name).includes(e.name))
-    
   })
     
     this.commonFileArray= commonArray;
     
-  
-
-    
-
   }
 
 
-
+//This function will return the files to be shown in the tab component in respective tabs
    getFileSet(version:string){
 
     if(version==="xxx"){
@@ -92,7 +85,7 @@ export class FileService {
 
 
  
-
+// Fetch files for a given version
    async getFileData(version:string):Promise<File[]>{
    
     const response =await axios.get('http://localhost:8080/gsoc/files/'+version)
@@ -101,8 +94,8 @@ export class FileService {
     
   }
 
+  //This will track all selected files among the verions
   selectFile(version:string,name:string){
-
 
     if (this.selections.hasOwnProperty(version)) {
       let fileList=this.selections[version]
