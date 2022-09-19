@@ -1,3 +1,19 @@
-.example-margin {
-    margin: 0 12px;
+/* .check-box-container{ */
+  /* margin: 0px 10px; */
+/* } */
+
+/* .check-box {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+  } */
+
+  .check-box-fileSize {
+
+    margin-top: 0px;
+    padding-left: 23px;
+    font-size: 11px;
+    font-style: italic;
+    
+
   }

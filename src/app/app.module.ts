@@ -18,6 +18,7 @@ import { FileService } from './services/file.service';
 import { FormsModule } from '@angular/forms';
 import { SummaryComponent } from './components/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [VersionService,FileService],
   bootstrap: [AppComponent]

@@ -11,7 +11,6 @@ export class SummaryComponent implements OnInit {
 
   public selections: { [version: string] : string[] }={};
   public _sameFileForSelectedReleases: boolean=true;
-  // public selectedVersions:string[]=[];
   public finalSelectedVersions;
   public noFilesSelectedFlag=true;
 
@@ -46,39 +45,45 @@ export class SummaryComponent implements OnInit {
 
   }
 
-
+// Iterate through selected files and extract links for download
   download(){
-    //send request to cloudFront
+    
     if(!this.noFilesSelectedFlag){      
-      console.log("send request to cloudFront")
-      if(!this._fileService.sameFileForSelectedReleases){
-        // console.log(this.selections);
+      var linksArr:any[]=[];
+      if(!this._fileService.sameFileForSelectedReleases ){
         
-        let linksArr:any[]=[];
         for(let version in this.selections){
-          
-          var FileNames=this.selections[version];
-          
-          
+          let FileNames=this.selections[version];
           FileNames.forEach(file_name=>{
-            console.log(file_name);
-            var fileObj=this._fileService.versionFileMap[version].filter((file)=>file.name==file_name)[0]
+            let fileObj=this._fileService.versionFileMap[version].filter((file)=>file.name==file_name)[0]
             linksArr.push(fileObj.link)
-            // console.log("file obj");
-            
+         
           })
           
         }
 
-        //Downloading files logic
-        linksArr.forEach((link:string)=>{
-          console.log("link",link);  //download each link
-          
-        })
+      }else{
+          let FileNames=this.selections['xxx']
+  
+          for(let key in this.finalSelectedVersions){
+            
+            FileNames.forEach((file_name)=>{
+                
+                let version =this.finalSelectedVersions[key]
+                console.log(this._fileService.versionFileMap[version]);
+                let fileObj =this._fileService.versionFileMap[version].filter((file)=>file.name==file_name)[0]
+                linksArr.push(fileObj.link)
+              })
+            }
+            console.log(linksArr);
+           
 
-   
-          
       }
+      //Downloading files logic
+      linksArr.forEach((link:string)=>{
+        console.log("link",link);  //download each link
+        
+      })
     }
   }
 

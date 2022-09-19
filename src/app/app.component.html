@@ -22,16 +22,41 @@
 <app-tab *ngIf="isVersionSelected ; else elseBlock">
 </app-tab>
 
-<ng-template #elseBlock>
+<ng-template #elseBlock >
 
-  <h1>Welcome to Reactome's Archive Downloader! </h1>
-  <h3> 
 
-    To begin, please select the version(s) of Reactome for which you would like to download files by clicking the "Select Version(s)" button.
-    
-    After selecting your version(s), you can select individual files for download.  If you wish to download the same files for all selected version numbers, check the "Download same files for selected releases?" to 'yes'.
-    
-    After selecting all files, click the "Download files" button to review and finish your downloading.</h3>
+  <h1 >Welcome to Reactome's Archive Downloader! </h1>
+  <div style="word-spacing: 7px;color:rgb(3, 48, 78)">
+    <h3> 
+  
+      <span style="display:inline;">
+        <mat-icon >done</mat-icon>
+        To begin, please select the version(s) of Reactome for which you would like to download files by clicking the "Pick Version(s)" button.
+      </span>
+      <br>
+      <br>
+  
+      <span>
+        <mat-icon >done</mat-icon>
+        After selecting your version(s), you can select individual files for download.
+      </span>
+      <br>
+      <br>
+  
+      <span>
+        <mat-icon >done</mat-icon>
+        If you wish to download the same files for all selected version numbers, check the "Download same files for selected releases?" to 'yes'.
+      </span>
+      
+      <br>
+      <br>
+      <span>
+        <mat-icon >done</mat-icon>
+        After selecting all files, click the "Download files" button to review and finish your downloading.
+      </span>
+      
+    </h3>
+  </div>
 
 </ng-template>
 
