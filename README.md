@@ -14,7 +14,7 @@ In Reactome, once the new data is released, preceding data will be archived in a
 
 - Discuss and added suggestions to the mock UIs
 - Implemented the UIs using Angular framework
-- Implemented a dummy [REST-API](https://drive.google.com/file/d/15mY2DHELAuNrvbsbKmYPWD8ef1kKMfos/view?usp=sharing) to test the UI in local environment
+- Implemented a dummy [REST-API](https://drive.google.com/file/d/1ECFLzHVb0hUYg7nAbULpZ6EkupJWf0qi/view?usp=sharing) to test the UI in local environment
 
 ## Development server
 
